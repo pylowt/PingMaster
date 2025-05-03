@@ -29,13 +29,14 @@ This project will be implemented using a variety of technologies and tools. Belo
 - Python 3.13+
 - GCP account with Cloud Run enabled
 
-### Run Locally
+### Run Development Locally
 
-1. Clone this repository:
+1. Clone this repository and run dev:
 
 ```bash
 git clone https://github.com/pylowt/PingMaster.git
-cd statusping
+cd PingMaster/app
+fastapi dev main.py
 ```
 
 ## License
