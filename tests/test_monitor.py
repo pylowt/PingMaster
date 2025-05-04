@@ -4,8 +4,8 @@ from app.monitor import ping
 
 
 @pytest.mark.asyncio
-async def test_ping():
-    status = await ping("https://www.paullowther.dev")
+async def test_ping_200():
+    status = await ping("https://httpstat.us/200")
     assert 200 == status
 
 
