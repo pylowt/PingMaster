@@ -34,8 +34,8 @@ This project will be implemented using a variety of technologies and tools. Belo
 1. Clone this repository and run dev:
 
 ```bash
-git clone https://github.com/pylowt/PingMaster.git
-cd PingMaster/app
+git clone https://github.com/pylowt/pingmaster.git
+cd pingmaster/app
 fastapi dev main.py
 ```
 
