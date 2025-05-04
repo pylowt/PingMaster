@@ -26,7 +26,7 @@ This project will be implemented using a variety of technologies and tools. Belo
 ### Requirements
 - Docker
 - Terraform
-- Python 3.13+
+- Python 3.10
 - GCP account with Cloud Run enabled
 
 ### Run Development Locally
