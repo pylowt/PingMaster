@@ -16,12 +16,10 @@ def ci_server():
     proc = subprocess.Popen(
         ["poetry", "run", "uvicorn", "tests.ci_server:app", "--port", "8000"]
     )
-    print("running setup")
     # Crude method for ensuring the server is ready.
     # TODO: investigate a method to probe the server to confirm startup negating the time.sleep method
     time.sleep(1)
     yield
-    print("running teardown")
     proc.terminate()
 
 
