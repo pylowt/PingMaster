@@ -30,6 +30,6 @@ jobs:
     - name: Lint
       run: |
         make lint
-    - name: Test with pytest
+    - name: Integration Tests
       run: |
-        make test
+        make integration_test
