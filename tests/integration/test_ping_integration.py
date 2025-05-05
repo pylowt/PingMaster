@@ -1,5 +1,6 @@
 import os
 import subprocess
+import yaml
 import time
 import httpx
 import pytest
@@ -7,6 +8,13 @@ import pytest
 from app.monitor import ping
 
 BASE_URL: str = os.getenv("BASE_URL", "http://localhost:8000")
+
+mock_config = """
+urls:
+  - url: https://www.example.com
+  - url: https://httpstat.us/200
+interval_seconds: 60
+"""
 
 
 @pytest.fixture(scope="class")
@@ -60,3 +68,11 @@ class TestPingEndpoints:
     async def test_timeout(self):
         with pytest.raises(httpx.TimeoutException):
             await ping(f"{BASE_URL}/timeout", timeout=0.2)
+
+    @pytest.mark.asyncio
+    async def test_schedule(self):
+        file = os.path.join("../../app/", "config.yaml")
+        with open(file, "w") as f:
+            yaml.dump(mock_config, f)
+        # TODO add test functionality for schedule, see monitor.py for scratch pad
+        os.remove(file)
