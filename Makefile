@@ -16,3 +16,8 @@ format:
 ci_server:
 	poetry install
 	poetry run uvicorn app.ci_server:app --reload &
+
+
+.PHONY: integration_test
+integration_test: ci_server
+	poetry run pytest -v tests/integration --tb=short
