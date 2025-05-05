@@ -3,7 +3,6 @@ SHELL := bash
 .PHONY: test
 test: integration_test
 
-
 .PHONY: lint
 lint:
 	poetry run ruff check .
