@@ -1,8 +1,8 @@
-# PingMaster
+# PulseCheck
 
 ## Introduction
 
-**PingMaster** is a simple Python-based microservice that monitors a set of URLs, logs their availability and response time, and stores the results for further analysis. This service is designed to be deployed on Google Cloud Run and is containerised using Docker.
+**PulseCheck** is a simple Python-based microservice that monitors a set of URLs, logs their availability and response time, and stores the results for further analysis. This service is designed to be deployed on Google Cloud Run and is containerised using Docker.
 
 ## Planned Features
 - Monitor multiple URLs and log their status.
@@ -34,8 +34,8 @@ This project will be implemented using a variety of technologies and tools. Belo
 1. Clone this repository and run dev:
 
 ```bash
-git clone https://github.com/pylowt/pingmaster.git
-cd pingmaster/app
+git clone https://github.com/pylowt/pulsecheck.git
+cd pulsecheck/app
 fastapi dev main.py
 ```
 
