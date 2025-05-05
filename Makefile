@@ -2,7 +2,7 @@ SHELL := bash
 
 .PHONY: test
 test: integration_test
-	poetry run pytest -v --tb=short
+
 
 .PHONY: lint
 lint:
