@@ -46,7 +46,6 @@ def ci_server():
 
 @pytest.mark.usefixtures("ci_server")
 class TestPingEndpoints:
-
     @pytest.mark.asyncio
     async def test_ping_200(self):
         status = await ping(f"{BASE_URL}/ok")

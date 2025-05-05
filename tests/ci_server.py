@@ -23,6 +23,7 @@ async def timeout():
     await asyncio.sleep(0.5)
     return Response(status_code=status.HTTP_400_BAD_REQUEST)
 
+
 @app.get("/healthcheck")
 async def health():
     return Response(status_code=status.HTTP_200_OK)
