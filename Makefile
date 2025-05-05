@@ -1,7 +1,7 @@
 SHELL := bash
 
 .PHONY: test
-test: ci_server
+test: integration_test
 	poetry run pytest -v --tb=short
 
 .PHONY: lint
@@ -12,12 +12,6 @@ lint:
 format:
 	poetry run ruff format .
 
-.PHONY: ci_server
-ci_server:
-	poetry install
-	poetry run uvicorn app.ci_server:app --reload &
-
-
 .PHONY: integration_test
-integration_test: ci_server
-	poetry run pytest -v tests/integration --tb=short
+integration_test:
+	poetry run pytest -vs tests/integration --tb=short
