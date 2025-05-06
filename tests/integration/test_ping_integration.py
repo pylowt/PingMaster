@@ -68,11 +68,3 @@ class TestPingEndpoints:
     async def test_timeout(self):
         with pytest.raises(httpx.TimeoutException):
             await ping(f"{BASE_URL}/timeout", timeout=0.2)
-
-    @pytest.mark.asyncio
-    async def test_schedule(self):
-        file = os.path.join("../../app/", "config.yaml")
-        with open(file, "w") as f:
-            yaml.dump(mock_config, f)
-        # TODO add test functionality for schedule, see monitor.py for scratch pad
-        os.remove(file)

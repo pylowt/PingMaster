@@ -1,10 +1,13 @@
 import httpx
+import yaml
 
 TIMEOUT = 5
 
 
 def load_config():
-    pass
+    with open("app/config.yaml", "r") as f:
+        config = yaml.safe_load(f)
+    return config
 
 
 async def ping(url: str, timeout=TIMEOUT) -> int:
