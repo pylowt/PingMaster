@@ -1,8 +1,5 @@
 from unittest.mock import mock_open, patch
 
-import pytest
-import yaml
-
 from app.monitor import load_config
 
 mock_yaml = """

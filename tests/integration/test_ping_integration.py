@@ -1,6 +1,5 @@
 import os
 import subprocess
-import yaml
 import time
 import httpx
 import pytest
