@@ -28,6 +28,7 @@ async def schedule_checks():
     interval = config.get("interval_seconds", 60)
     asyncio.create_task(runner(urls, interval))
 
+
 async def runner(urls: list[str], interval: int = 60):
     """
     Executes periodic asynchronous checks for a list of URLs at specified intervals.

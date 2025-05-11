@@ -22,7 +22,10 @@ def test_load_config():
 @patch("app.monitor.load_config")
 @patch("app.monitor.runner")
 async def test_schedule_checks_starts_runner(mock_runner, mock_load_config):
-    mock_load_config.return_value = {"urls": ["http://example.com"], "interval_seconds": 30}
+    mock_load_config.return_value = {
+        "urls": ["http://example.com"],
+        "interval_seconds": 30,
+    }
     mock_runner.return_value = AsyncMock()
 
     await schedule_checks()
