@@ -8,6 +8,13 @@ from app.monitor import ping
 
 BASE_URL: str = os.getenv("BASE_URL", "http://localhost:8000")
 
+mock_config = """
+urls:
+  - url: https://www.example.com
+  - url: https://httpstat.us/200
+interval_seconds: 60
+"""
+
 
 @pytest.fixture(scope="class")
 def ci_server():

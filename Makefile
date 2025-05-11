@@ -1,7 +1,7 @@
 SHELL := bash
 
 .PHONY: test
-test: integration_test
+test: unit_test integration_test
 
 .PHONY: lint
 lint:
@@ -14,3 +14,7 @@ format:
 .PHONY: integration_test
 integration_test:
 	poetry run pytest -vs tests/integration --tb=short
+
+.PHONY: unit_test
+unit_test:
+	poetry run pytest -vs tests/unit --tb=short
