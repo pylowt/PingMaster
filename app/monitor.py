@@ -1,3 +1,5 @@
+import asyncio
+
 import httpx
 import yaml
 
@@ -28,12 +30,13 @@ async def schedule_checks():
 
     # 3. The next step is more complex. Need to execute these as async coroutines to ensure multiple outbound
     #    http requests can be made simultaneously. How do I gather these url's into a list for asyncio to execute them?
-    # Schedule three calls *concurrently*:
-    # from stackoverflow:
-    # await asyncio.gather(
-    #     factorial("A", 2),
-    #     factorial("B", 3),
-    #     factorial("C", 4),
-    # )
+    asyncio.create_task(runner(urls, interval))
 
-    pass
+async def runner(urls: list[str], interval: int = 60):
+    while True:
+        try:
+            await asyncio.gather(*[ping(url) for url in urls])
+        except Exception as e:
+            print(f"Error during URL checks: {e}")
+            raise e
+        await asyncio.sleep(interval)
