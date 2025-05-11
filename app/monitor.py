@@ -19,20 +19,30 @@ async def ping(url: str, timeout=TIMEOUT) -> int:
 
 
 async def schedule_checks():
-    # Aim: create a scheduler that reads the urls to check and interval from the config file
-    # use asyncio to create a task that runs a ping for each url
-    # Steps:
-    # 1. Read URLs from config
+    """
+    Schedules periodic checks by loading configuration data, retrieving URLs and
+    intervals; executes an async task to perform these checks.
+    """
     config = load_config()
     urls = config.get("urls", [])
-    # 2. Read interval from config
     interval = config.get("interval_seconds", 60)
-
-    # 3. The next step is more complex. Need to execute these as async coroutines to ensure multiple outbound
-    #    http requests can be made simultaneously. How do I gather these url's into a list for asyncio to execute them?
     asyncio.create_task(runner(urls, interval))
 
 async def runner(urls: list[str], interval: int = 60):
+    """
+    Executes periodic asynchronous checks for a list of URLs at specified intervals.
+
+    This function takes a list of URLs and pings each one asynchronously. The
+    interval between each set of pings can be specified as a parameter. If an
+    exception occurs during the URL checks, the exception is logged to standard
+    output and then re-raised. The function runs indefinitely until manually
+    stopped, or an unhandled exception halts execution.
+
+    :param urls: A list of URLs to check.
+    :param interval: The time interval, in seconds, between consecutive checks.
+                     Defaults to 60 seconds.
+    :return: None
+    """
     while True:
         try:
             await asyncio.gather(*[ping(url) for url in urls])
